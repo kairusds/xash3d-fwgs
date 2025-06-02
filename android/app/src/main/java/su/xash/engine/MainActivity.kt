@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 FILE_ACCESS_REQUEST
             )
         }
+        return
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -54,13 +54,7 @@ class LibraryFragment : Fragment(), MenuProvider {
             (binding.gamesList.adapter as GameAdapter).submitList(it)
         }
 
-        libraryViewModel.workInfos.observe(viewLifecycleOwner) {
-            libraryViewModel.refreshDownloads(requireContext())
-        }
-
-        libraryViewModel.downloads.observe(viewLifecycleOwner) {
-            libraryViewModel.reloadGames(requireContext())
-        }
+        libraryViewModel.reloadGames(requireContext())
     }
 
     override fun onDestroyView() {
