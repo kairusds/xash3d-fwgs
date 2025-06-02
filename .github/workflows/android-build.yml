@@ -60,5 +60,4 @@ jobs:
         gh release create "$RELEASE_TAG" artifacts/* \
           --title "Xash3D FWGS Continuous ${{ github.ref_name }} Build" \
           --target $GITHUB_SHA \
-          --repo "$GITHUB_REPOSITORY" \
-          --prerelease
+          --repo "$GITHUB_REPOSITORY"
