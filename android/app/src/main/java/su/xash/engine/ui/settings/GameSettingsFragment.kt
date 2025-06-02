@@ -1,13 +1,12 @@
 package su.xash.engine.ui.settings
 
+// https://github.com/Velaron/xash3d-fwgs/blob/def07f4e5b3110c737d1466026c922373b37d487/android/app/src/main/java/su/xash/engine/ui/settings/GameSettingsFragment.kt
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import su.xash.engine.R
 import su.xash.engine.databinding.FragmentGameSettingsBinding
 import su.xash.engine.ui.library.LibraryViewModel
 
@@ -19,7 +18,7 @@ class GameSettingsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentGameSettingsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,11 +49,6 @@ class GameSettingsFragment : Fragment() {
         childFragmentManager.beginTransaction()
             .add(binding.settingsFragment.id, GameSettingsPreferenceFragment(game))
             .commit();
-
-        binding.bottomNavigation.menu.findItem(R.id.action_uninstall).setOnMenuItemClickListener {
-            libraryViewModel.uninstallGame(game)
-            findNavController().popBackStack()
-        }
     }
 
     override fun onDestroyView() {

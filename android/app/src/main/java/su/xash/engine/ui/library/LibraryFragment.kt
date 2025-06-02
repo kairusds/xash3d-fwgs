@@ -74,23 +74,6 @@ class LibraryFragment : Fragment(), MenuProvider {
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
-            R.id.action_browse -> {
-                try {
-                    startActivity(
-                        Intent(Intent.ACTION_VIEW).setDataAndType(
-                            null, "vnd.android.document/directory"
-                        )
-                    )
-                }
-                catch(e: ActivityNotFoundException) {
-                    Toast.makeText(getActivity(), R.string.library_fragment_no_file_manager, Toast.LENGTH_LONG).show()
-                }
-            }
-
-            R.id.action_install -> {
-                findNavController().navigate(R.id.action_libraryFragment_to_setupFragment)
-            }
-
             R.id.action_settings -> {
                 findNavController().navigate(R.id.action_libraryFragment_to_appSettingsFragment)
             }

@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings.Secure;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -122,6 +123,14 @@ public class XashActivity extends SDLActivity {
     // TODO: REMOVE LATER, temporary launchers support?
     @Override
     protected String[] getArguments() {
+        String basedir = getIntent().getStringExtra("basedir");
+        if (basedir != null) {
+            nativeSetenv("XASH3D_BASEDIR", basedir);
+        } else {
+            String rootPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/games/xash";
+            nativeSetenv("XASH3D_BASEDIR", rootPath);
+        }
+        
         String gamedir = getIntent().getStringExtra("gamedir");
         if (gamedir == null) gamedir = "valve";
         nativeSetenv("XASH3D_GAME", gamedir);
